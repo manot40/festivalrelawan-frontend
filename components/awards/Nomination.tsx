@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
 import { Card, Modal } from '..';
-import { XMarkIcon } from '@heroicons/react/20/solid';
 import UserCard, { UserAvatar, type TSubject } from './UserCard';
 
 type TNomination = {
@@ -18,17 +17,9 @@ const Nomination: React.FC<TNomination> = ({ volunteers, organizations }) => {
     <div className="md:max-h-[27.5rem] overflow-hidden">
       <Modal isOpen={!!subject.story} onClose={closeModal}>
         <Modal.Header>
-          <div className="flex justify-between w-full">
-            <h3 className="text-lg font-medium text-neutral-900">
-              Cerita {subject.category || 'Relawan'}
-            </h3>
-            <button>
-              <XMarkIcon
-                onClick={closeModal}
-                className="w-8 h-8 text-neutral-600"
-              />
-            </button>
-          </div>
+          <h3 className="text-lg font-medium text-neutral-900">
+            Cerita {subject.category || 'Relawan'}
+          </h3>
         </Modal.Header>
         <Modal.Body>
           <div className="mx-auto space-y-4 py-2">
@@ -39,44 +30,65 @@ const Nomination: React.FC<TNomination> = ({ volunteers, organizations }) => {
         </Modal.Body>
       </Modal>
       <div className="grid grid-rows-3 md:grid-cols-3 gap-4">
-        <Card
-          className="max-h-96 overflow-y-auto space-y-4"
-          header={<label className="font-bold w-full">Pilih Relawan</label>}>
-          {volunteers.map((volunteer) => (
-            <UserCard key={volunteer._id} onStory={setSubject} {...volunteer} />
-          ))}
+        <Card className="max-h-96 overflow-y-auto space-y-4">
+          <Card.Header>
+            <label className="font-bold w-full">Pilih Relawan</label>
+          </Card.Header>
+          <Card.Body>
+            {volunteers.length > 0
+              ? volunteers.map((volunteer) => (
+                  <UserCard
+                    key={volunteer._id}
+                    onStory={setSubject}
+                    {...volunteer}
+                  />
+                ))
+              : Array(2)
+                  .fill(0)
+                  .map((_, i) => <UserCard key={i} onStory={setSubject} />)}
+          </Card.Body>
         </Card>
-        <Card
-          className="max-h-96 overflow-y-auto space-y-4"
-          header={
+        <Card className="max-h-96 overflow-y-auto space-y-4">
+          <Card.Header>
             <label className="font-bold w-full">Pilih Organisasi Yayasan</label>
-          }>
-          {organizations
-            .filter(({ category }) => category === 'yayasan')
-            .map((community) => (
-              <UserCard
-                key={community._id}
-                onStory={setSubject}
-                {...community}
-              />
-            ))}
+          </Card.Header>
+          <Card.Body>
+            {organizations.length > 0
+              ? organizations
+                  .filter(({ category }) => category === 'yayasan')
+                  .map((community) => (
+                    <UserCard
+                      key={community._id}
+                      onStory={setSubject}
+                      {...community}
+                    />
+                  ))
+              : Array(2)
+                  .fill(0)
+                  .map((_, i) => <UserCard key={i} onStory={setSubject} />)}
+          </Card.Body>
         </Card>
-        <Card
-          className="max-h-96 overflow-y-auto space-y-4"
-          header={
+        <Card className="max-h-96 overflow-y-auto space-y-4">
+          <Card.Header>
             <label className="font-bold w-full">
               Pilih Organisasi Komunitas
             </label>
-          }>
-          {organizations
-            .filter(({ category }) => category === 'komunitas')
-            .map((community) => (
-              <UserCard
-                key={community._id}
-                onStory={setSubject}
-                {...community}
-              />
-            ))}
+          </Card.Header>
+          <Card.Body>
+            {organizations.length > 0
+              ? organizations
+                  .filter(({ category }) => category === 'komunitas')
+                  .map((community) => (
+                    <UserCard
+                      key={community._id}
+                      onStory={setSubject}
+                      {...community}
+                    />
+                  ))
+              : Array(2)
+                  .fill(0)
+                  .map((_, i) => <UserCard key={i} onStory={setSubject} />)}
+          </Card.Body>
         </Card>
       </div>
     </div>

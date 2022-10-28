@@ -22,12 +22,11 @@ const SectionTwo: React.FC = () => {
             <h2 className="text-white">Yang Seru di Festival Relawan 2022</h2>
             <Slide className="flex justify-center select-none md:space-x-4">
               {events.map((event, i) => (
-                <Card
-                  key={i}
-                  header={
+                <Card key={i}>
+                  <Card.Header>
                     <label className="font-bold w-full">{event.title}</label>
-                  }>
-                  {event.body}
+                  </Card.Header>
+                  <Card.Body>{event.body}</Card.Body>
                 </Card>
               ))}
             </Slide>

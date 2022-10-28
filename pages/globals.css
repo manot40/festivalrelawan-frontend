@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @font-face {
+  font-display: swap;
   font-family: 'Something Looks Natural';
   src: url('../assets/fonts/SomethingLooksNatural-Regular.woff2')
     format('woff2');

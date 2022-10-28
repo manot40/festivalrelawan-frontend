@@ -1,8 +1,12 @@
-import { ReactNode, Children } from 'react';
+import React from 'react';
 
-export default function findChildren(children: ReactNode, name: string) {
-  return Children.map(children, (child) =>
-    // @ts-ignore
-    child?.type.displayName === name ? child : null
-  );
+type NamedChildren = { type: { displayName?: string } } & React.ReactNode;
+
+export default function findChildren(
+  children: React.ReactNode | React.ReactElement,
+  name: string
+) {
+  return React.Children.map(children as NamedChildren, (child) =>
+    child?.type?.displayName === name ? child : null
+  ) as React.ReactElement[];
 }

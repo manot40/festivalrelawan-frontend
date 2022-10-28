@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import clsx from 'clsx';
+import { XMarkIcon } from '@heroicons/react/20/solid';
 import { motion, AnimatePresence } from 'framer-motion';
 import findChildren from '../utils/findChildren';
 
@@ -27,6 +27,7 @@ const Modal = ({ children, isOpen, onClose, onProceed }: IProps) => {
     <AnimatePresence>
       {isOpen && (
         <motion.div
+          key="1"
           exit={{ opacity: 0 }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.75 }}
@@ -36,6 +37,7 @@ const Modal = ({ children, isOpen, onClose, onProceed }: IProps) => {
       )}
       {isOpen && (
         <motion.div
+          key="2"
           initial={{ y: -80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           exit={{ y: -80, opacity: 0 }}
@@ -47,23 +49,33 @@ const Modal = ({ children, isOpen, onClose, onProceed }: IProps) => {
               className="top-0 left-0 fixed w-full h-full z-40"
             />
             <div className="relative z-50 border-neutral-800 bg-white rounded-lg shadow">
-              <div className="flex justify-between items-center p-4 rounded-t border-b border-gray-200">
-                {Header?.length ? Header : <div />}
-                <div
-                  onClick={onClose}
-                  className="flex items-center cursor-pointer p-1 hover:bg-neutral-300 rounded-md">
-                  {/* @ts-ignore */}
-                  <ion-icon style={{ fontSize: 24 }} name="close-outline" />
+              {Header.length > 0 && (
+                <div className="flex justify-between items-center p-4 rounded-t border-b border-gray-200">
+                  {Header.map((child, i) => (
+                    <React.Fragment key={i}>{child}</React.Fragment>
+                  ))}
+                  <button type="button">
+                    <XMarkIcon
+                      onClick={onClose}
+                      className="w-8 h-8 text-neutral-600"
+                    />
+                  </button>
                 </div>
-              </div>
-              {Body?.length ? (
-                <div className="p-6 space-y-6">{Body}</div>
-              ) : null}
-              {Footer?.length ? (
+              )}
+              {Body.length > 0 && (
+                <div className="p-6 space-y-6">
+                  {Body.map((child, i) => (
+                    <React.Fragment key={i}>{child}</React.Fragment>
+                  ))}
+                </div>
+              )}
+              {Footer.length > 0 && (
                 <div className="flex justify-end items-center p-4 space-x-2 rounded-b border-t border-gray-200">
-                  {Footer}
+                  {Footer.map((child, i) => (
+                    <React.Fragment key={i}>{child}</React.Fragment>
+                  ))}
                 </div>
-              ) : null}
+              )}
             </div>
           </div>
         </motion.div>
@@ -72,15 +84,18 @@ const Modal = ({ children, isOpen, onClose, onProceed }: IProps) => {
   );
 };
 
-const Header = ({ children }: any) => children;
+const Header = ({ children }: React.HTMLAttributes<any>) =>
+  children as React.ReactElement;
 Header.displayName = 'Header';
 Modal.Header = Header;
 
-const Body = ({ children }: any) => children;
+const Body = ({ children }: React.HTMLAttributes<any>) =>
+  children as React.ReactElement;
 Body.displayName = 'Body';
 Modal.Body = Body;
 
-const Footer = ({ children }: any) => children;
+const Footer = ({ children }: React.HTMLAttributes<any>) =>
+  children as React.ReactElement;
 Footer.displayName = 'Footer';
 Modal.Footer = Footer;
 
