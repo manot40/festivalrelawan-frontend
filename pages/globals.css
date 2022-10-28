@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Something Looks Natural';
+  src: url('../assets/fonts/SomethingLooksNatural-Regular.woff2')
+    format('woff2');
+}
+
+@layer base {
+  h1 {
+    @apply text-3xl md:text-5xl;
+  }
+  h2 {
+    @apply text-2xl md:text-4xl;
+  }
+  h3 {
+    @apply text-lg md:text-xl;
+  }
+  .blaze-pagination > button {
+    @apply text-transparent text-xs scale-150 rounded-full outline-none mt-4 p-0 h-1 w-1 opacity-30 cursor-pointer bg-black;
+  }
+  .blaze-pagination > button.active {
+    @apply opacity-100;
+  }
+}
