@@ -5,13 +5,14 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 // Components
+import { Container } from '..';
 import Rundown from './Rundown';
 import { Card, Slide, Button } from '..';
 
 const SectionTwo: React.FC = () => {
   return (
     <section className="w-screen py-28 bg-sky-500">
-      <div className="flex px-8 md:px-0 item-center justify-center h-full mx-auto max-w-screen-lg">
+      <Container lg flex className="h-full justify-center items-center">
         <motion.div
           className="text-center space-y-20 my-auto max-w-screen"
           whileInView={{ opacity: 1 }}
@@ -49,7 +50,7 @@ const SectionTwo: React.FC = () => {
             </Link>
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 };

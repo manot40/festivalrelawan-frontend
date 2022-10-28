@@ -3,7 +3,7 @@ import { NextPage } from 'next';
 import { motion } from 'framer-motion';
 
 // Component and Hook
-import { Hero, SEOHead } from '../components';
+import { Container, Hero, SEOHead } from '../components';
 
 // Asset
 import TimAksiBaik from '../assets/images/about/tab.jpg';
@@ -15,9 +15,11 @@ const About: NextPage = () => {
       <motion.div
         animate={{ opacity: 1 }}
         initial={{ opacity: 0 }}
-        transition={{ delay: 0.2 }}
-        className="flex item-center py-24 px-8 md:px-0 justify-center mx-auto min-w-screen max-w-screen-lg">
-        <div className="space-y-24 mt-8">
+        transition={{ delay: 0.2 }}>
+        <Container
+          lg
+          flex
+          className="flex-col translate-y-6 py-24 space-y-24 justify-center items-center">
           <section id="about-fr" className="space-y-12">
             <div className="text-center space-y-3 max-w-xl mx-auto">
               <h1 className="text-blue-900">Tentang Festival Relawan</h1>
@@ -71,7 +73,7 @@ const About: NextPage = () => {
               Festival Relawan dan Bulan Relawan Nasional 2019.
             </p>
           </section>
-        </div>
+        </Container>
       </motion.div>
     </Hero>
   );

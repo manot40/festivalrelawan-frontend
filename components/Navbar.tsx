@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
       )}
       animate={{ scale: 1 }}
       initial={{ scale: 1.5 }}>
-      <div className="flex items-center justify-between w-auto px-4 py-2.5 lg:px-0 text-black-900 max-w-screen-lg mx-auto">
+      <div className="flex items-center justify-between w-auto py-2.5 px-4 text-black-900 max-w-screen-lg mx-auto">
         {/* Logo */}
         <Link
           href="/"

@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 
 // Component and Hook
 import Hero from '../Hero';
+import { Container } from '..';
 import { useBreakpoints } from '../../hooks';
 // Assets
 import Logo from '../../public/images/logo.png';
@@ -15,7 +16,7 @@ const SectionOne: React.FC = () => {
   return (
     <section id="hero">
       <Hero>
-        <div className="flex item-center px-8 md:px-0 justify-center mx-auto w-screen h-screen max-w-screen-lg">
+        <Container lg flex className="h-screen justify-center items-center">
           <motion.div
             className="text-center space-y-5 my-auto"
             animate={{ opacity: 1 }}
@@ -40,7 +41,7 @@ const SectionOne: React.FC = () => {
               Kuningan City Ballroom Lantai P7
             </p>
           </motion.div>
-        </div>
+        </Container>
       </Hero>
     </section>
   );

@@ -7,7 +7,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 // Components
-import { Button, Slide } from '..';
+import { Button, Slide, Container } from '..';
 
 // Assets
 import * as Sponsor from './SponsorImages';
@@ -18,7 +18,7 @@ const SectionThree: React.FC = () => {
   const imgWrap = 'flex justify-center';
   return (
     <section className="w-screen py-28">
-      <div className="flex px-8 md:px-0 item-center justify-center h-full mx-auto max-w-screen-lg">
+      <Container lg flex className="h-full justify-center items-center">
         <motion.div
           className="text-center space-y-14 md:space-y-20 my-auto max-w-screen"
           whileInView={{ opacity: 1 }}
@@ -128,7 +128,7 @@ const SectionThree: React.FC = () => {
             </Slide>
           </div>
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 };
