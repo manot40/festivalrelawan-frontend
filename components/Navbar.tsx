@@ -106,6 +106,7 @@ const Navbar: React.FC = () => {
             </nav>
           </motion.div>
           <button
+            aria-label="Buka Menu"
             onClick={() => setOpen(!open)}
             className="w-6 h-6 ml-2 mr-1 rounded">
             <Bars3Icon className="w-full h-full" />

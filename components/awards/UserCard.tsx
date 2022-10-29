@@ -49,6 +49,7 @@ const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Lihat profil"
                 onClick={(e) => e.stopPropagation()}
                 href={`${apiUrl}/o/user/${props._id}`}>
                 <UserIcon
@@ -56,6 +57,7 @@ const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
                 />
               </Link>
               <button
+                aria-label="Tampilkan cerita"
                 onClick={(e) => {
                   e.stopPropagation();
                   props.onStory?.(props as TSubject);
