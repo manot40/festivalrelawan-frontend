@@ -3,8 +3,9 @@ import type { TSubject } from '../components/awards/UserCard';
 
 import { useEffect, useState } from 'react';
 
-import { Container, Vote } from '../components';
-import Nomination from '../components/awards/Nomination';
+import toast from 'react-hot-toast';
+import { Container } from '../components';
+import { Vote, Nomination } from '../components/awards';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
@@ -58,7 +59,7 @@ const Awards: NextPage = () => {
           }))
         );
       } catch (err: any) {
-        console.error(err.message);
+        toast.error('Gagal memuat data. Silakan coba lagi nanti');
       } finally {
         setFirstLoad(false);
       }
@@ -71,7 +72,7 @@ const Awards: NextPage = () => {
     <Container
       lg
       flex
-      style={{ minHeight: 'calc(100vh - 80px)' }}
+      base
       className="py-24 space-y-24 justify-center items-center">
       <div className="text-center space-y-6">
         <h1>Indorelawan Awards 2022</h1>

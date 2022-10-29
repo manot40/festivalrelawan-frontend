@@ -7,6 +7,7 @@ type TContainer = {
   md?: boolean;
   lg?: boolean;
   xl?: boolean;
+  base?: boolean;
   flex?: boolean;
 } & React.BaseHTMLAttributes<HTMLDivElement>;
 
@@ -16,6 +17,7 @@ const Container: React.FC<TContainer> = ({
   md,
   lg,
   xl,
+  base,
   flex,
   className,
   ...restProps
@@ -30,6 +32,7 @@ const Container: React.FC<TContainer> = ({
         md && 'max-w-screen-md',
         lg && 'max-w-screen-lg',
         xl && 'max-w-screen-xl',
+        base && 'min-h-[calc(100vh-80px)]',
         'w-screen px-6 md:px-4 mx-auto'
       )}>
       {children}

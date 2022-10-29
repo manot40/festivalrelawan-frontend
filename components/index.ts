@@ -11,4 +11,3 @@ export { default as Slide } from './Slide';
 export { default as Input } from './Input';
 export { default as Card } from './Card';
 export { default as Hero } from './Hero';
-export { default as Vote } from './Vote';
