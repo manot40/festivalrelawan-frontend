@@ -98,7 +98,7 @@ export const UserAvatar: React.FC<
     return <div className={style.concat(' animate-pulse bg-neutral-300')} />;
 
   return (
-    <img alt={props.name} src={`${apiUrl}/${props.avatar}`} className={style} />
+    <img alt={props.name} src={`${apiUrl}${props.avatar}`} className={style} />
   );
 };
 
