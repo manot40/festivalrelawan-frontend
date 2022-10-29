@@ -1,4 +1,4 @@
-import { SectionOne, SectionTwo, SectionThree } from '../components/homepage';
+import { SectionOne, SectionTwo, SectionThree } from 'components/homepage';
 
 export default function Home() {
   return (

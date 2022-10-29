@@ -1,7 +1,7 @@
 import React, { useId } from 'react';
 
 import clsx from 'clsx';
-import findChildren from '../utils/findChildren';
+import findChildren from 'utils/findChildren';
 
 type TSelect = {
   danger?: boolean;

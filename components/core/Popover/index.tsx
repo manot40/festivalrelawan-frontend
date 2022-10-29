@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 import clsx from 'clsx';
-import findChildren from '../utils/findChildren';
+import findChildren from 'utils/findChildren';
 import { motion, AnimatePresence } from 'framer-motion';
 
 type TPopover = {} & React.HTMLAttributes<HTMLDivElement>;

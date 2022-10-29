@@ -1,11 +1,11 @@
 import type { NextPage } from 'next';
-import type { TSubject } from '../components/awards/UserCard';
+import type { TSubject } from 'components/awards/UserCard';
 
 import { useEffect, useState } from 'react';
 
 import toast from 'react-hot-toast';
-import { Container } from '../components';
-import { Vote, Nomination } from '../components/awards';
+import { Container } from 'components';
+import { Vote, Nomination } from 'components/awards';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 

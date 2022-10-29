@@ -4,7 +4,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { Card, Popover } from '..';
+import { Card, Popover } from 'components';
 import { UserIcon, InformationCircleIcon } from '@heroicons/react/20/solid';
 
 export type TSubject = {

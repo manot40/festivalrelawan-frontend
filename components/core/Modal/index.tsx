@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 
+import clsx from 'clsx';
+import findChildren from 'utils/findChildren';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { motion, AnimatePresence } from 'framer-motion';
-import findChildren from '../utils/findChildren';
-import clsx from 'clsx';
 
 interface IProps extends React.BaseHTMLAttributes<HTMLDivElement> {
   isOpen: boolean;

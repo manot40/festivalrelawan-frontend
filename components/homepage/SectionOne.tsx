@@ -5,9 +5,8 @@ import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 // Component and Hook
-import Hero from '../Hero';
-import { Container } from '..';
-import { useBreakpoints } from '../../hooks';
+import { Container, Hero } from '..';
+import { useBreakpoints } from 'hooks';
 // Assets
 import Logo from '../../public/images/logo.png';
 

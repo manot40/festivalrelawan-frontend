@@ -1,6 +1,7 @@
 import type { AppProps } from 'next/app';
+
 import { Toaster } from 'react-hot-toast';
-import { Footer, Navbar, SEOHead } from '../components';
+import { Footer, Navbar, SEOHead } from 'components';
 
 import './globals.css';
 import 'blaze-slider/dist/blaze.css';

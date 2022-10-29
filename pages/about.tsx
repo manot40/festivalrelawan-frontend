@@ -3,10 +3,10 @@ import { NextPage } from 'next';
 import { motion } from 'framer-motion';
 
 // Component and Hook
-import { Container, Hero, SEOHead } from '../components';
+import { Container, Hero, SEOHead } from 'components';
 
 // Asset
-import TimAksiBaik from '../assets/images/about/tab.jpg';
+import TimAksiBaik from 'assets/images/about/tab.jpg';
 
 const About: NextPage = () => {
   return (

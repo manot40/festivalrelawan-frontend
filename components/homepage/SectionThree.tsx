@@ -11,12 +11,12 @@ import { Button, Slide, Container } from '..';
 
 // Assets
 import * as Sponsor from './SponsorImages';
-import MapImg from '../../assets/images/map.png';
+import MapImg from 'assets/images/map.png';
 
 const SectionThree: React.FC = () => {
   const logoSize = 200;
-  const style = { maxHeight: 115 };
   const imgWrap = 'flex justify-center';
+  const style = { maxHeight: 115, userDrag: 'none' };
 
   return (
     <section className="w-screen py-28">

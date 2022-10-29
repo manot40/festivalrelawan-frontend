@@ -5,9 +5,8 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 // Components
-import { Container } from '..';
 import Rundown from './Rundown';
-import { Card, Slide, Button } from '..';
+import { Container, Card, Slide, Button } from 'components';
 
 const SectionTwo: React.FC = () => {
   return (

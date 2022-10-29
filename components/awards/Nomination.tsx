@@ -1,8 +1,8 @@
-import type { TSelection } from '../../pages/awards';
+import type { TSelection } from 'pages/awards';
 
 import React, { useState } from 'react';
 
-import { Card, Modal } from '..';
+import { Card, Modal } from 'components';
 import UserCard, { UserAvatar, type TSubject } from './UserCard';
 
 type TNomination = {

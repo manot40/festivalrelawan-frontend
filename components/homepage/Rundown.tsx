@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import React from 'react';
 
-import { useBreakpoints } from '../../hooks';
+import { useBreakpoints } from 'hooks';
 
 type TRundown = {
   name: string;

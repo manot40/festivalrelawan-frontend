@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
-import type { TSelection } from '../../pages/awards';
 import type { TSubject } from './UserCard';
+import type { TSelection } from 'pages/awards';
 
 import React from 'react';
 
 import clsx from 'clsx';
-import { Button } from '..';
+import { Button } from 'components';
 
 type TVote = {
   selection: TSelection;

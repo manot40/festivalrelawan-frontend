@@ -1,7 +1,7 @@
 import React from 'react';
 
 import clsx from 'clsx';
-import findChildren from '../utils/findChildren';
+import findChildren from 'utils/findChildren';
 
 type TCard = {} & React.HTMLAttributes<HTMLDivElement>;
 

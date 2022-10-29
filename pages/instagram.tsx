@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 
 import Link from 'next/link';
 
-import { Button, Container } from '../components';
+import { Button, Container } from 'components';
 
 const Instagram: NextPage = () => {
   return (

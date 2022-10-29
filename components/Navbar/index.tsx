@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 
 // Libraries
-import { motion } from 'framer-motion';
-import Image from 'next/image';
-import Link from 'next/link';
 import clsx from 'clsx';
+import Link from 'next/link';
+import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 // Component and Hook
-import { Dropdown } from '.';
+import { Dropdown } from 'components';
 import { useRouter } from 'next/router';
-import { useHeaderVisible } from '../hooks';
+import { useHeaderVisible } from 'hooks';
 import { Bars3Icon } from '@heroicons/react/20/solid';
 
 // Assets
-import LogoImage from '../public/images/logo.png';
+import LogoImage from 'public/images/logo.png';
 
 const Navbar: React.FC = () => {
   const { pathname } = useRouter();
