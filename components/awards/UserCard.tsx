@@ -12,11 +12,12 @@ export type TSubject = {
   name: string;
   story: string;
   avatar: string;
-  category?: string;
+  category: string;
 };
 
 type TUserCard = {
-  selected?: boolean;
+  selected?: string;
+  onSelect?: (id: string, category: string) => void;
   onStory?: (story: TSubject) => void;
 };
 
@@ -24,10 +25,14 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
   return (
-    <Card className="cursor-pointer">
+    <Card
+      onClick={() =>
+        props._id && props.onSelect?.(props._id, props.category || 'relawan')
+      }
+      className="cursor-pointer">
       <Card.Body
         className={clsx(
-          props.selected
+          props._id && props.selected == props._id
             ? 'bg-green-600 rounded-lg text-white'
             : 'text-neutral-700',
           'flex flex-col space-y-2 justify-center items-center transition-colors'

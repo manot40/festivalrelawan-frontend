@@ -8,8 +8,15 @@ import Nomination from '../components/awards/Nomination';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
+export type TSelection = {
+  relawan: string;
+  yayasan: string;
+  komunitas: string;
+};
+
 const Awards: NextPage = () => {
   const [firstLoad, setFirstLoad] = useState(true);
+  const [selection, setSelection] = useState({} as TSelection);
   const [volunteers, setVolunteers] = useState([] as TSubject[]);
   const [organizations, setOrganizations] = useState([] as TSubject[]);
 
@@ -32,6 +39,7 @@ const Awards: NextPage = () => {
         setVolunteers(
           volunteers.map((volunteer: any) => ({
             _id: volunteer._id,
+            category: 'relawan',
             story: volunteer.story,
             avatar: volunteer.user.avatar.replace(/(?<=)\?.*/, ''),
             name: volunteer.user.name.first.concat(
@@ -74,8 +82,10 @@ const Awards: NextPage = () => {
         </div>
         <Nomination
           firstLoad={firstLoad}
-          organizations={organizations}
+          selection={selection}
           volunteers={volunteers}
+          organizations={organizations}
+          mutateSelection={setSelection}
         />
       </div>
     </Container>

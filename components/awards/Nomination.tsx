@@ -1,3 +1,5 @@
+import type { TSelection } from '../../pages/awards';
+
 import React, { useState } from 'react';
 
 import { Card, Modal } from '..';
@@ -5,24 +7,38 @@ import UserCard, { UserAvatar, type TSubject } from './UserCard';
 
 type TNomination = {
   firstLoad: boolean;
+  selection: TSelection;
   volunteers: TSubject[];
   organizations: TSubject[];
+  mutateSelection: (cb: (prev: TSelection) => TSelection) => void;
 };
 
 const Nomination: React.FC<TNomination> = ({
+  firstLoad,
+  selection,
   volunteers,
   organizations,
-  firstLoad,
+  mutateSelection,
 }) => {
   const [subject, setSubject] = useState({} as TSubject);
 
-  const closeModal = () => setSubject({} as TSubject);
+  const handleCloseModal = () => setSubject({} as TSubject);
 
-  const renderCard = (subject: TSubject[], filter = '') => {
+  const handleSelection = (id: string, category: string) =>
+    mutateSelection((prev) => {
+      if (prev[category as keyof TSelection] === id)
+        return { ...prev, [category]: '' };
+      return { ...prev, [category]: id };
+    });
+
+  const renderCard = (
+    subject: TSubject[],
+    filter: keyof TSelection = 'relawan'
+  ) => {
     if (firstLoad)
       return Array(2)
         .fill(0)
-        .map((_, i) => <UserCard key={i} onStory={setSubject} />);
+        .map((_, i) => <UserCard key={i} />);
 
     if (!subject.length)
       return (
@@ -32,15 +48,21 @@ const Nomination: React.FC<TNomination> = ({
       );
 
     return subject
-      .filter(({ category = '' }) => category.includes(filter))
+      .filter(({ category }) => category.includes(filter))
       .map((data) => (
-        <UserCard key={data._id} onStory={setSubject} {...data} />
+        <UserCard
+          key={data._id}
+          onStory={setSubject}
+          onSelect={handleSelection}
+          selected={selection[filter]}
+          {...data}
+        />
       ));
   };
 
   return (
     <div className="md:max-h-[27.5rem] overflow-hidden">
-      <Modal isOpen={!!subject.story} onClose={closeModal}>
+      <Modal isOpen={!!subject.story} onClose={handleCloseModal}>
         <Modal.Header>
           <h3 className="text-lg font-medium text-neutral-900">
             Cerita {subject.category || 'Relawan'}
