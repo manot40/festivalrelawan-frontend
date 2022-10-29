@@ -15,7 +15,9 @@ import MapImg from '../../assets/images/map.png';
 
 const SectionThree: React.FC = () => {
   const logoSize = 200;
+  const style = { maxHeight: 115 };
   const imgWrap = 'flex justify-center';
+
   return (
     <section className="w-screen py-28">
       <Container lg flex className="h-full justify-center items-center">
@@ -61,7 +63,12 @@ const SectionThree: React.FC = () => {
               }}>
               {Sponsor.Intiator.map((img, i) => (
                 <div key={i} className={imgWrap}>
-                  <Image {...img} width={logoSize} height={logoSize} />
+                  <Image
+                    {...img}
+                    style={style}
+                    width={logoSize}
+                    height={logoSize}
+                  />
                 </div>
               ))}
             </Slide>
@@ -78,7 +85,12 @@ const SectionThree: React.FC = () => {
               }}>
               {Sponsor.Presenter.map((img, i) => (
                 <div key={i} className={imgWrap}>
-                  <Image {...img} width={logoSize} height={logoSize} />
+                  <Image
+                    {...img}
+                    style={style}
+                    width={logoSize}
+                    height={logoSize}
+                  />
                 </div>
               ))}
             </Slide>
@@ -94,7 +106,12 @@ const SectionThree: React.FC = () => {
               }}>
               {Sponsor.Supporter.map((img, i) => (
                 <div key={i} className={imgWrap}>
-                  <Image {...img} width={logoSize} height={logoSize} />
+                  <Image
+                    {...img}
+                    style={style}
+                    width={logoSize}
+                    height={logoSize}
+                  />
                 </div>
               ))}
             </Slide>
@@ -110,7 +127,12 @@ const SectionThree: React.FC = () => {
               }}>
               {Sponsor.Media.map((img, i) => (
                 <div key={i} className={imgWrap}>
-                  <Image {...img} width={logoSize} height={logoSize} />
+                  <Image
+                    {...img}
+                    style={style}
+                    width={logoSize}
+                    height={logoSize}
+                  />
                 </div>
               ))}
             </Slide>
@@ -127,7 +149,12 @@ const SectionThree: React.FC = () => {
               }}>
               {Sponsor.Venue.map((img, i) => (
                 <div key={i} className={imgWrap}>
-                  <Image {...img} width={logoSize} height={logoSize} />
+                  <Image
+                    {...img}
+                    style={style}
+                    width={logoSize}
+                    height={logoSize}
+                  />
                 </div>
               ))}
             </Slide>
