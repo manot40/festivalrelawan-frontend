@@ -1,26 +1,21 @@
-const { createServer } = require('http');
-const { join } = require('path');
-const { parse } = require('url');
-const next = require('next');
+const { existsSync } = require('fs');
+const { exec, execSync } = require('child_process');
 
-const app = next({ dev: process.env.NODE_ENV !== 'production' });
-const handle = app.getRequestHandler();
+if (!existsSync('.next')) {
+  console.log('.next folder not found! Building app...');
+  execSync('npm run build');
+}
 
-app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url, true);
-    const { pathname } = parsedUrl;
+const nextServer = exec('npm run start');
 
-    // handle GET request to /service-worker.js
-    if (pathname === '/service-worker.js') {
-      const filePath = join(__dirname, '.next', pathname);
+nextServer.stdout.on('data', (data) => {
+  console.log(data);
+});
 
-      app.serveStatic(req, res, filePath);
-    } else {
-      res.setHeader('Set-Cookie', 'HttpOnly;Secure;SameSite=None');
-      handle(req, res, parsedUrl);
-    }
-  }).listen(3000, () => {
-    console.log(`> Ready on http://localhost:${3000}`);
-  });
+nextServer.stderr.on('data', (data) => {
+  console.error(data);
+});
+
+nextServer.on('exit', (code) => {
+  console.log(`Next server exited with code ${code}`);
 });
