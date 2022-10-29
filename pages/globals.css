@@ -26,3 +26,34 @@
     @apply opacity-100;
   }
 }
+
+@layer utilities {
+  .input-default {
+    @apply text-gray-900 bg-gray-50 border-gray-300;
+  }
+  .input-default:focus,
+  .input-default:active {
+    @apply ring-blue-500 border-blue-500 !important;
+  }
+  .input-danger {
+    @apply text-red-900 bg-red-50 border-red-500 placeholder-red-700;
+  }
+  .input-danger:focus,
+  .input-danger:active {
+    @apply ring-red-500 border-red-500;
+  }
+  .input-warning {
+    @apply text-yellow-900 bg-yellow-50 border-yellow-500 placeholder-yellow-700;
+  }
+  .input-warning:focus,
+  .input-warning:active {
+    @apply ring-yellow-500 border-yellow-500;
+  }
+  .input-success {
+    @apply text-green-900 bg-green-50 border-green-500 placeholder-green-700;
+  }
+  .input-success:focus,
+  .input-success:active {
+    @apply ring-green-500 border-green-500;
+  }
+}
