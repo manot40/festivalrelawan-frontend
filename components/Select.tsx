@@ -50,7 +50,7 @@ const Select = ({
         {...restProps}
         className={clsx(
           className,
-          'block w-full p-2.5 text-sm rounded-lg border transition-all duration-300',
+          'block w-full p-2 text-sm rounded-lg border transition-all duration-300',
           danger && 'input-danger',
           success && 'input-success',
           warning && 'input-warning',

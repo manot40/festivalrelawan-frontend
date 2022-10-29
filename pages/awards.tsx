@@ -3,15 +3,15 @@ import type { TSubject } from '../components/awards/UserCard';
 
 import { useEffect, useState } from 'react';
 
-import { Container } from '../components';
+import { Container, Vote } from '../components';
 import Nomination from '../components/awards/Nomination';
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export type TSelection = {
-  relawan: string;
-  yayasan: string;
-  komunitas: string;
+  relawan: TSubject;
+  yayasan: TSubject;
+  komunitas: TSubject;
 };
 
 const Awards: NextPage = () => {
@@ -24,10 +24,10 @@ const Awards: NextPage = () => {
     // Fetch all necessary API data
     (async () => {
       try {
-        const [province, volunteers, organizations] = await Promise.all([
-          fetch(`${apiUrl}/external/api/province`).then((res) =>
-            res.json().then(({ results }) => results)
-          ),
+        const [volunteers, organizations] = await Promise.all([
+          // fetch(`${apiUrl}/external/api/province`).then((res) =>
+          //   res.json().then(({ results }) => results)
+          // ),
           fetch(`${apiUrl}/external/festivalrelawan/nominate/volunteer`).then(
             (res) => res.json().then(({ results }) => results)
           ),
@@ -84,6 +84,7 @@ const Awards: NextPage = () => {
         </div>
         <Nomination {...nominationProps} mutateSelection={setSelection} />
       </div>
+      <Vote selection={selection} />
     </Container>
   );
 };

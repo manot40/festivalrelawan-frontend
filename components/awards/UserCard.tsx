@@ -4,7 +4,7 @@ import React from 'react';
 import clsx from 'clsx';
 import Link from 'next/link';
 
-import { Card } from '..';
+import { Card, Popover } from '..';
 import { UserIcon, InformationCircleIcon } from '@heroicons/react/20/solid';
 
 export type TSubject = {
@@ -17,17 +17,19 @@ export type TSubject = {
 
 type TUserCard = {
   selected?: string;
-  onSelect?: (id: string, category: string) => void;
+  onSelect?: (subject: TSubject, category: string) => void;
   onStory?: (story: TSubject) => void;
 };
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
+  const { onSelect, onStory, selected, ...subject } = props;
   return (
     <Card
       onClick={() =>
-        props._id && props.onSelect?.(props._id, props.category || 'relawan')
+        props._id &&
+        props.onSelect?.(subject as TSubject, props.category || 'relawan')
       }
       className="cursor-pointer">
       <Card.Body
@@ -46,24 +48,34 @@ const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
         <div className="flex space-x-6">
           {props?._id ? (
             <>
-              <Link
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Lihat profil"
-                onClick={(e) => e.stopPropagation()}
-                href={`${apiUrl}/o/user/${props._id}`}>
-                <UserIcon
-                  className={clsx('w-5 h-5', props?._id || 'animate-pulse')}
-                />
-              </Link>
-              <button
-                aria-label="Tampilkan cerita"
-                onClick={(e) => {
-                  e.stopPropagation();
-                  props.onStory?.(props as TSubject);
-                }}>
-                <InformationCircleIcon className="w-5 h-5" />
-              </button>
+              <Popover>
+                <Popover.Trigger>
+                  <Link
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Lihat profil"
+                    onClick={(e) => e.stopPropagation()}
+                    href={`${apiUrl}/o/user/${props._id}`}>
+                    <UserIcon
+                      className={clsx('w-5 h-5', props?._id || 'animate-pulse')}
+                    />
+                  </Link>
+                </Popover.Trigger>
+                <Popover.Body>Profil</Popover.Body>
+              </Popover>
+              <Popover>
+                <Popover.Trigger>
+                  <button
+                    aria-label="Tampilkan cerita"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      props.onStory?.(props as TSubject);
+                    }}>
+                    <InformationCircleIcon className="w-5 h-5" />
+                  </button>
+                </Popover.Trigger>
+                <Popover.Body>Tentang</Popover.Body>
+              </Popover>
             </>
           ) : (
             <>

@@ -24,11 +24,11 @@ const Nomination: React.FC<TNomination> = ({
 
   const handleCloseModal = () => setSubject({} as TSubject);
 
-  const handleSelection = (id: string, category: string) =>
+  const handleSelection = (subject: TSubject, category: string) =>
     mutateSelection((prev) => {
-      if (prev[category as keyof TSelection] === id)
-        return { ...prev, [category]: '' };
-      return { ...prev, [category]: id };
+      if (prev[category as keyof TSelection]?._id === subject._id)
+        return { ...prev, [category]: null };
+      return { ...prev, [category]: subject };
     });
 
   const renderCard = (
@@ -54,7 +54,7 @@ const Nomination: React.FC<TNomination> = ({
           key={data._id}
           onStory={setSubject}
           onSelect={handleSelection}
-          selected={selection[filter]}
+          selected={selection[filter]?._id}
           {...data}
         />
       ));

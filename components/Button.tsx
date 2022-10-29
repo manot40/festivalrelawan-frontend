@@ -9,7 +9,7 @@ const Button: React.FC<TButton> = ({ children, ...restProps }) => {
       {...restProps}
       className={clsx(
         restProps.className,
-        'py-2.5 px-5 mr-2 mb-2 text-sm font-medium transition-colors text-sky-500 focus:outline-none bg-white rounded-lg border border-sky-500 hover:bg-sky-500 hover:text-white focus:z-10'
+        'py-2 px-5 text-sm font-medium transition-colors text-sky-500 focus:outline-none bg-white rounded-lg border border-sky-500 hover:bg-sky-500 hover:text-white focus:z-10'
       )}>
       {children}
     </button>
