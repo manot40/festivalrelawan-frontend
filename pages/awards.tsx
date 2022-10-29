@@ -9,44 +9,51 @@ import Nomination from '../components/awards/Nomination';
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
 const Awards: NextPage = () => {
+  const [firstLoad, setFirstLoad] = useState(true);
   const [volunteers, setVolunteers] = useState([] as TSubject[]);
   const [organizations, setOrganizations] = useState([] as TSubject[]);
 
   useEffect(() => {
     // Fetch all necessary API data
     (async () => {
-      const [province, volunteers, organizations] = await Promise.all([
-        fetch(`${apiUrl}/external/api/province`).then((res) =>
-          res.json().then(({ results }) => results)
-        ),
-        fetch(`${apiUrl}/external/festivalrelawan/nominate/volunteer`).then(
-          (res) => res.json().then(({ results }) => results)
-        ),
-        fetch(`${apiUrl}/external/festivalrelawan/nominate/organization`).then(
-          (res) => res.json().then(({ results }) => results)
-        ),
-      ]);
-
-      setVolunteers(
-        volunteers.map((volunteer: any) => ({
-          _id: volunteer._id,
-          story: volunteer.story,
-          avatar: volunteer.user.avatar.replace(/(?<=)\?.*/, ''),
-          name: volunteer.user.name.first.concat(
-            ` ${volunteer.user.name.last}`
+      try {
+        const [province, volunteers, organizations] = await Promise.all([
+          fetch(`${apiUrl}/external/api/province`).then((res) =>
+            res.json().then(({ results }) => results)
           ),
-        }))
-      );
+          fetch(`${apiUrl}/external/festivalrelawan/nominate/volunteer`).then(
+            (res) => res.json().then(({ results }) => results)
+          ),
+          fetch(
+            `${apiUrl}/external/festivalrelawan/nominate/organization`
+          ).then((res) => res.json().then(({ results }) => results)),
+        ]);
 
-      setOrganizations(
-        organizations.map((org: any) => ({
-          _id: org._id,
-          story: org.story,
-          avatar: org.organization.logo.replace(/(?<=)\?.*/, ''),
-          name: org.organization.name,
-          category: org.category,
-        }))
-      );
+        setVolunteers(
+          volunteers.map((volunteer: any) => ({
+            _id: volunteer._id,
+            story: volunteer.story,
+            avatar: volunteer.user.avatar.replace(/(?<=)\?.*/, ''),
+            name: volunteer.user.name.first.concat(
+              ` ${volunteer.user.name.last}`
+            ),
+          }))
+        );
+
+        setOrganizations(
+          organizations.map((org: any) => ({
+            _id: org._id,
+            story: org.story,
+            avatar: org.organization.logo.replace(/(?<=)\?.*/, ''),
+            name: org.organization.name,
+            category: org.category,
+          }))
+        );
+      } catch (err: any) {
+        console.error(err.message);
+      } finally {
+        setFirstLoad(false);
+      }
     })();
   }, []);
 
@@ -65,7 +72,11 @@ const Awards: NextPage = () => {
           telah ditutup. Nantikan hasil akhir Relawan dan Organisasi terpilih
           pada Festival Relawan 2022
         </div>
-        <Nomination organizations={organizations} volunteers={volunteers} />
+        <Nomination
+          firstLoad={firstLoad}
+          organizations={organizations}
+          volunteers={volunteers}
+        />
       </div>
     </Container>
   );

@@ -1,10 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import React from 'react';
 
+import clsx from 'clsx';
 import Link from 'next/link';
+
 import { Card } from '..';
 import { UserIcon, InformationCircleIcon } from '@heroicons/react/20/solid';
-import clsx from 'clsx';
 
 export type TSubject = {
   _id: string;
@@ -14,32 +15,46 @@ export type TSubject = {
   category?: string;
 };
 
+type TUserCard = {
+  selected?: boolean;
+  onStory?: (story: TSubject) => void;
+};
+
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 
-const UserCard: React.FC<
-  Partial<TSubject> & { onStory: (story: TSubject) => void }
-> = (props) => {
+const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
   return (
-    <Card className="flex flex-col space-y-2 justify-center items-center">
-      <Card.Body>
+    <Card className="cursor-pointer">
+      <Card.Body
+        className={clsx(
+          props.selected
+            ? 'bg-green-600 rounded-lg text-white'
+            : 'text-neutral-700',
+          'flex flex-col space-y-2 justify-center items-center transition-colors'
+        )}>
         <UserAvatar {...props} />
         {props?.name ? (
           <p>{props.name}</p>
         ) : (
           <div className="animate-pulse w-36 h-6 bg-neutral-300" />
         )}
-        <div className="flex space-x-6 text-neutral-600">
+        <div className="flex space-x-6">
           {props?._id ? (
             <>
               <Link
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
                 href={`${apiUrl}/o/user/${props._id}`}>
                 <UserIcon
                   className={clsx('w-5 h-5', props?._id || 'animate-pulse')}
                 />
               </Link>
-              <button onClick={() => props.onStory(props as TSubject)}>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  props.onStory?.(props as TSubject);
+                }}>
                 <InformationCircleIcon className="w-5 h-5" />
               </button>
             </>

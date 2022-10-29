@@ -51,12 +51,7 @@ const Navbar: React.FC = () => {
             <Link className="hover:text-neutral-800" href="/">
               Beranda
             </Link>
-            <Dropdown
-              trigger={
-                <button className="flex justify-between items-center py-2 pr-4 pl-3 w-full font-medium  rounded hover:bg-gray-100 hover:text-neutral-800 md:hover:bg-transparent md:border-0 md:p-0 md:w-auto">
-                  Tentang
-                </button>
-              }>
+            <Dropdown trigger={<button type="button">Tentang</button>}>
               <Link href="/about" className="py-2 px-4 w-full">
                 Festival Relawan
               </Link>
@@ -133,9 +128,10 @@ const Logo: React.FC<React.BaseHTMLAttributes<HTMLDivElement>> = ({
         className
       )}>
       <Image
-        src={LogoImage}
+        priority
         width={140}
         height={70}
+        src={LogoImage}
         alt="Festival Relawan Logo"
       />
     </div>

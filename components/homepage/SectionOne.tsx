@@ -23,6 +23,7 @@ const SectionOne: React.FC = () => {
             initial={{ opacity: 0 }}
             transition={{ delay: 0.2 }}>
             <Image
+              priority
               src={Logo}
               width={md ? 340 : 240}
               height={md ? 170 : 120}
