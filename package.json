@@ -7,8 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"{hooks,components,pages,app}/**/*.{ts,tsx,js,jsx,json}\"",
-    "format:check": "prettier --list-different \"{hooks,components,pages,app}/**/*.{ts,tsx,js,jsx,json}\""
+    "format": "prettier --write \"{hooks,components,pages,app,utils}/**/*.{ts,tsx,js,jsx,json}\"",
+    "format:check": "prettier --list-different \"{hooks,components,pages,app,utils}/**/*.{ts,tsx,js,jsx,json}\""
   },
   "dependencies": {
     "@heroicons/react": "^2.0.12",

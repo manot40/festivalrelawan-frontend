@@ -55,6 +55,7 @@ const SectionThree: React.FC = () => {
             <Slide
               hideArrow
               config={{
+                autoplayInterval: 2000,
                 enablePagination: false,
                 stopAutoplayOnInteraction: false,
               }}>
@@ -70,8 +71,9 @@ const SectionThree: React.FC = () => {
             <Slide
               hideArrow
               config={{
-                enablePagination: false,
                 slidesToShow: 2,
+                enablePagination: false,
+                autoplayInterval: 2000,
                 stopAutoplayOnInteraction: false,
               }}>
               {Sponsor.Presenter.map((img, i) => (
@@ -86,6 +88,7 @@ const SectionThree: React.FC = () => {
             <Slide
               hideArrow
               config={{
+                autoplayInterval: 2000,
                 enablePagination: false,
                 stopAutoplayOnInteraction: false,
               }}>
@@ -101,6 +104,7 @@ const SectionThree: React.FC = () => {
             <Slide
               hideArrow
               config={{
+                autoplayInterval: 2000,
                 enablePagination: false,
                 stopAutoplayOnInteraction: false,
               }}>
@@ -116,8 +120,9 @@ const SectionThree: React.FC = () => {
             <Slide
               hideArrow
               config={{
-                enablePagination: false,
                 slidesToShow: 2,
+                enablePagination: false,
+                autoplayInterval: 2000,
                 stopAutoplayOnInteraction: false,
               }}>
               {Sponsor.Venue.map((img, i) => (
