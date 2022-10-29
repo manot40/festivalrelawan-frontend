@@ -65,6 +65,8 @@ const Awards: NextPage = () => {
     })();
   }, []);
 
+  const nominationProps = { firstLoad, selection, volunteers, organizations };
+
   return (
     <Container
       lg
@@ -80,13 +82,7 @@ const Awards: NextPage = () => {
           telah ditutup. Nantikan hasil akhir Relawan dan Organisasi terpilih
           pada Festival Relawan 2022
         </div>
-        <Nomination
-          firstLoad={firstLoad}
-          selection={selection}
-          volunteers={volunteers}
-          organizations={organizations}
-          mutateSelection={setSelection}
-        />
+        <Nomination {...nominationProps} mutateSelection={setSelection} />
       </div>
     </Container>
   );
