@@ -22,12 +22,13 @@ const Popover = ({ children, className, ...restProps }: TPopover) => {
           <motion.div
             {...restProps}
             role="tooltip"
-            exit={{ y: 5, x: '-50%', opacity: 0 }}
-            initial={{ y: 5, x: '-50%', opacity: 0 }}
-            animate={{ y: -10, x: '-50%', opacity: 1, display: 'inline-block' }}
+            transition={{ duration: 0.2 }}
+            exit={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            initial={{ scale: 0.8, x: '-50%', y: -10, opacity: 0 }}
             className={clsx(
               className,
-              'hidden bottom-full left-1/2 absolute z-10 text-sm font-light rounded-lg shadow-sm border text-gray-500 bg-white border-gray-200'
+              'absolute bottom-full left-1/2 z-10 text-sm font-light rounded-lg shadow-sm border text-white bg-neutral-800'
             )}>
             {Body.map((child, i) => (
               <React.Fragment key={i}>{child}</React.Fragment>

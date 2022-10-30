@@ -1,10 +1,12 @@
 const { existsSync } = require('fs');
-const { exec, execSync } = require('child_process');
 
 if (!existsSync('.next')) {
+  const { execSync } = require('child_process');
   console.log('.next folder not found! Building app...');
   execSync('npm run build');
 }
+
+const { exec } = require('child_process');
 
 const nextServer = exec('npm run start');
 
