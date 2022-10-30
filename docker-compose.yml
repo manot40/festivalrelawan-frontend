@@ -1,0 +1,13 @@
+version: '3'
+services:
+  app:
+    container_name: festivalrelawan-frontend
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        API_URL: ${API_URL}
+        STORAGE_URL: ${STORAGE_URL}
+    ports:
+      - 3000:3000/tcp
+    restart: 'unless-stopped'
