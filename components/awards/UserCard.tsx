@@ -38,7 +38,7 @@ const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
           props._id && props.selected == props._id
             ? 'bg-green-600 rounded-lg text-white'
             : 'text-neutral-700',
-          'flex flex-col space-y-2 justify-center items-center transition-colors px-4 py-2'
+          'flex flex-col space-y-2 justify-center items-center transition-colors p-4'
         )}>
         <UserAvatar {...props} />
         {props?.name ? (
