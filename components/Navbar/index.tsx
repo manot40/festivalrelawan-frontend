@@ -51,7 +51,7 @@ const Navbar: React.FC = () => {
             <Link className="hover:text-neutral-800" href="/">
               Beranda
             </Link>
-            <Dropdown trigger={<button type="button">Tentang</button>}>
+            <Dropdown list trigger={<button type="button">Tentang</button>}>
               <Link href="/about" className="py-2 px-4 w-full">
                 Festival Relawan
               </Link>
