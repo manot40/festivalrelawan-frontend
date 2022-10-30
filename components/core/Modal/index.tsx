@@ -5,14 +5,21 @@ import findChildren from 'utils/findChildren';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import { motion, AnimatePresence } from 'framer-motion';
 
-interface IProps extends React.BaseHTMLAttributes<HTMLDivElement> {
+interface IProps extends React.HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
   showCloseBtn?: boolean;
   onClose: () => void;
   onProceed?: () => void;
 }
 
-const Modal = ({ children, isOpen, onClose, showCloseBtn = true }: IProps) => {
+const Modal = ({
+  isOpen,
+  onClose,
+  children,
+  className,
+  showCloseBtn = true,
+  ...restProps
+}: IProps) => {
   const Header = findChildren(children, 'Header');
   const Body = findChildren(children, 'Body');
   const Footer = findChildren(children, 'Footer');
@@ -56,17 +63,22 @@ const Modal = ({ children, isOpen, onClose, showCloseBtn = true }: IProps) => {
       {isOpen && (
         <motion.div
           key="2"
-          initial={{ y: -80, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: -80, opacity: 0 }}
-          transition={{ duration: 0.2 }}
-          className="flex overflow-y-auto overflow-x-hidden fixed top-0 left-0 z-[999] inset-0 mb-4 w-full md:inset-0 h-modal md:h-full justify-center items-center">
+          transition={{ duration: 0.3 }}
+          animate={{ scale: 1, opacity: 1 }}
+          exit={{ scale: 0.95, opacity: 0 }}
+          initial={{ scale: 0.95, opacity: 0 }}
+          className="flex fixed top-0 left-0 z-[999] w-full md:h-full justify-center items-center overflow-y-auto overflow-x-hidden">
           <div className="relative p-4 w-full max-w-2xl h-full md:h-auto max-h-screen">
             <div
               onClick={onClose}
               className="top-0 left-0 fixed w-full h-full z-40"
             />
-            <div className="relative z-50 border-neutral-800 bg-white rounded-lg shadow">
+            <div
+              {...restProps}
+              className={clsx(
+                className,
+                'relative z-50 border-neutral-800 bg-white rounded-lg'
+              )}>
               {Header.map((child, i) => (
                 <React.Fragment key={i}>{renderHeader(child)}</React.Fragment>
               ))}
