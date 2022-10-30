@@ -118,7 +118,7 @@ const Body = ({
   className,
   ...restProps
 }: React.HTMLAttributes<HTMLDivElement>) => (
-  <div {...restProps} className={clsx(className, 'p-5')}>
+  <div {...restProps} className={clsx(className || 'p-5')}>
     {children}
   </div>
 );

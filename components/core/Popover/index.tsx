@@ -28,7 +28,7 @@ const Popover = ({ children, className, ...restProps }: TPopover) => {
             initial={{ scale: 0.8, x: '-50%', y: -10, opacity: 0 }}
             className={clsx(
               className,
-              'absolute bottom-full left-1/2 z-10 text-sm font-light rounded-lg shadow-sm border text-white bg-neutral-800'
+              'absolute bottom-full left-1/2 z-10 text-sm font-light rounded-lg shadow-sm min-w-max text-white bg-neutral-800'
             )}>
             {Body.map((child, i) => (
               <React.Fragment key={i}>{child}</React.Fragment>

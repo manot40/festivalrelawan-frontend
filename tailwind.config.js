@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        typo: ['Inter', ...defaultTheme.fontFamily.sans],
         sans: ['Something Looks Natural', ...defaultTheme.fontFamily.sans],
       },
       colors: {

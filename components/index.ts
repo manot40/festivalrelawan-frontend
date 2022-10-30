@@ -14,3 +14,4 @@ export { default as Slide } from './core/Slide';
 // Helper Components
 export { default as Navbar } from './Navbar';
 export { default as SEOHead } from './SEOHead';
+export { default as ActivityCard } from './ActivityCard';

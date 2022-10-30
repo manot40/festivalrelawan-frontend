@@ -1,14 +1,31 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 // Libraries
 import Link from 'next/link';
+import toast from 'react-hot-toast';
 import { motion } from 'framer-motion';
 
 // Components
 import Rundown from './Rundown';
-import { Container, Card, Slide, Button } from 'components';
+import { Container, Card, Slide, Button, ActivityCard } from 'components';
 
 const SectionTwo: React.FC = () => {
+  const [activities, setActivities] = useState([] as EventInfo[]);
+
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/external/festivalrelawan/brn-activities`
+        );
+        const { results } = (await res.json()) as Res<EventInfo>;
+        setActivities(results);
+      } catch {
+        toast.error('Gagal memuat data aktivitas Festival Relawan');
+      }
+    })();
+  }, []);
+
   return (
     <section className="w-screen py-28 bg-sky-500">
       <Container lg flex className="h-full justify-center items-center">
@@ -36,7 +53,11 @@ const SectionTwo: React.FC = () => {
           </div>
           <div className="space-y-6 px-6 lg:px-0">
             <h2 className="text-white">Aktivitas Bulan Relawan Nasional</h2>
-            <p>Todo</p>
+            <Slide className="flex justify-center select-none md:space-x-4">
+              {activities.map((event) => (
+                <ActivityCard key={event._id} data={event.activity} />
+              ))}
+            </Slide>
             <br />
             <Link
               target="_blank"

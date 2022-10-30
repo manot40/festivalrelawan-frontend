@@ -81,7 +81,7 @@ const Nomination: React.FC<TNomination> = ({
           <Card.Header>
             <label className="font-bold w-full">Pilih Relawan</label>
           </Card.Header>
-          <Card.Body className="max-h-96 overflow-y-auto space-y-4">
+          <Card.Body className="max-h-96 p-4 overflow-y-auto space-y-4">
             {renderCard(volunteers)}
           </Card.Body>
         </Card>
@@ -89,7 +89,7 @@ const Nomination: React.FC<TNomination> = ({
           <Card.Header>
             <label className="font-bold w-full">Pilih Organisasi Yayasan</label>
           </Card.Header>
-          <Card.Body className="max-h-96 overflow-y-auto space-y-4">
+          <Card.Body className="max-h-96 p-4 overflow-y-auto space-y-4">
             {renderCard(organizations, 'yayasan')}
           </Card.Body>
         </Card>
@@ -99,7 +99,7 @@ const Nomination: React.FC<TNomination> = ({
               Pilih Organisasi Komunitas
             </label>
           </Card.Header>
-          <Card.Body className="max-h-96 overflow-y-auto space-y-4">
+          <Card.Body className="max-h-96 p-4 overflow-y-auto space-y-4">
             {renderCard(organizations, 'komunitas')}
           </Card.Body>
         </Card>
