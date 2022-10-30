@@ -39,7 +39,7 @@ const Vote: React.FC<TVote> = ({
             <img
               key={vote._id}
               className="w-10 h-10 rounded-full border-2 border-white"
-              src={`${process.env.NEXT_PUBLIC_API_URL}${vote.avatar}`}
+              src={`${process.env.NEXT_PUBLIC_STORAGE_URL}${vote.avatar}`}
               alt={vote.name}
             />
           ))}

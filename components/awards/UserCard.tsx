@@ -22,6 +22,7 @@ type TUserCard = {
 };
 
 const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+const storageUrl = process.env.NEXT_PUBLIC_STORAGE_URL;
 
 const UserCard: React.FC<Partial<TSubject> & TUserCard> = (props) => {
   const { onSelect, onStory, selected, ...subject } = props;
@@ -98,7 +99,11 @@ export const UserAvatar: React.FC<
     return <div className={style.concat(' animate-pulse bg-neutral-300')} />;
 
   return (
-    <img alt={props.name} src={`${apiUrl}${props.avatar}`} className={style} />
+    <img
+      alt={props.name}
+      src={`${storageUrl}${props.avatar}`}
+      className={style}
+    />
   );
 };
 
